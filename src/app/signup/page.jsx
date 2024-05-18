@@ -1,6 +1,6 @@
-import SignupForm from "@/components/SignupForm"
-import Link from "next/link"
-import React from "react"
+import SignupForm from "@/components/SignupForm";
+import Link from "next/link";
+import React from "react";
 
 const page = () => {
   return (
@@ -19,7 +19,7 @@ const page = () => {
         <SignupForm />
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default page
+export default page;
