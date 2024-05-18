@@ -103,7 +103,6 @@ const page = () => {
           </div>
         </div>
       </section>
-      <Chat />
     </div>
   );
 };

@@ -16,7 +16,6 @@ const Chat = () => {
   }, []);
   return (
     <div>
-      Chat
       <iframe
         src="https://chat.socialintents.com/c/chat-1716023973946"
         width="100%"
