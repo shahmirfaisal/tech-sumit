@@ -74,7 +74,7 @@ const page = () => {
                   Type
                 </h2>
                 <ul className="w-96 text-sm flex font-medium text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
-                  <li className="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
+                  <li className="w-full rounded-t-lg">
                     <div className="flex items-center ps-3">
                       <input
                         id="list-radio-license"
@@ -91,7 +91,7 @@ const page = () => {
                       </label>
                     </div>
                   </li>
-                  <li className="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
+                  <li className="w-full rounded-t-lg ">
                     <div className="flex items-center ps-3">
                       <input
                         id="list-radio-id"
