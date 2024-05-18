@@ -2,6 +2,8 @@
 
 import { connectToDb } from "@/database/connection"
 import { User } from "@/database/models/User"
+import { createToken } from "@/lib/jwt"
+import { comparePassword, encryptPassword } from "@/lib/passwords"
 
 const types = ["Student", "Teacher"]
 
