@@ -2,6 +2,7 @@ import { Schema, model, models } from "mongoose"
 
 const classroomSchema = new Schema({
   name: String,
+  description: String,
   members: [
     {
       type: Schema.Types.ObjectId,
