@@ -1,6 +1,14 @@
-import React from "react";
+import { connectToDb } from "@/database/connection"
+import { getUser } from "@/lib/user"
+import { redirect } from "next/navigation"
+import React from "react"
 
-const layout = ({ children }) => {
+const layout = async ({ children }) => {
+  await connectToDb()
+  const user = await getUser()
+
+  if (!user) redirect("/")
+
   return (
     <div className="my-12">
       <ul className="flex text-sm font-medium text-center text-gray-500 border-b border-gray-200 mx-24">
@@ -24,7 +32,7 @@ const layout = ({ children }) => {
       </ul>
       {children}
     </div>
-  );
-};
+  )
+}
 
-export default layout;
+export default layout

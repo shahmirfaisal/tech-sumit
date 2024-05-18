@@ -1,21 +1,31 @@
-import CreateClassroom from "@/components/CreateClassroom";
-import { Button } from "@/components/ui/button";
-import { connectToDb } from "@/database/connection";
-import { Classroom } from "@/database/models/Classroom";
-import { parseData } from "@/lib/database";
-import Link from "next/link";
-import React from "react";
+import CreateClassroom from "@/components/CreateClassroom"
+import { Button } from "@/components/ui/button"
+import { connectToDb } from "@/database/connection"
+import { Classroom } from "@/database/models/Classroom"
+import { parseData } from "@/lib/database"
+import { getUser } from "@/lib/user"
+import Link from "next/link"
+import React from "react"
 
 const page = async () => {
-  await connectToDb();
-  let classrooms = await Classroom.find();
-  classrooms = parseData(classrooms);
+  await connectToDb()
+  const user = await getUser()
+
+  if (user.type === "Teacher") {
+    var classrooms = await Classroom.find({ owner: user._id })
+    classrooms = parseData(classrooms)
+  } else {
+    var classrooms = await Classroom.find()
+    classrooms = parseData(classrooms)
+  }
 
   return (
     <>
-      <CreateClassroom>
-        <Button>Create Classroom</Button>
-      </CreateClassroom>
+      {user.type === "Teacher" && (
+        <CreateClassroom>
+          <Button>Create Classroom</Button>
+        </CreateClassroom>
+      )}
       <div className="flex flex-wrap gap-4 mx-24 my-4 justify-center max-md:mx-4">
         {classrooms.map((classroom) => (
           <div
@@ -117,7 +127,7 @@ const page = async () => {
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default page;
+export default page

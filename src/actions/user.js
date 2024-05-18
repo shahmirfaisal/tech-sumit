@@ -79,7 +79,7 @@ export const signup = async (prevState, formData) => {
     }
   }
 
-  redirect("/dashboard")
+  redirect("/dashboard/public")
   return { error: null, success: true }
 }
 
@@ -120,6 +120,11 @@ export const login = async (prev, formData) => {
     }
   }
 
-  redirect("/dashboard")
+  redirect("/dashboard/public")
   return { error: null, success: true }
+}
+
+export const logout = async () => {
+  cookies().delete("token")
+  redirect("/")
 }

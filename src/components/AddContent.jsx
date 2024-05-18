@@ -26,7 +26,7 @@ import { toast } from "sonner"
 import { Textarea } from "./ui/textarea"
 import { uploadFile } from "@/lib/cloudinary"
 
-const AddContent = ({ children }) => {
+const AddContent = ({ children, classroomId }) => {
   const [createContentState, createContentAction] = useFormState(
     createStudyMaterial,
     {
@@ -83,6 +83,10 @@ const AddContent = ({ children }) => {
           <Input placeholder="Youtube Video Link" name="video" />
 
           <input name="image" value={image} hidden />
+
+          {classroomId ? (
+            <input value={classroomId} hidden name="classroomId" readOnly />
+          ) : null}
 
           <Button type="submit">Post</Button>
         </form>

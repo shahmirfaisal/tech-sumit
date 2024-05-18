@@ -46,14 +46,21 @@ export const createClassroom = async (prev, formData) => {
 
 export const joinClassroom = async (prev, formData) => {
   try {
-    const userId = formData.get("userId").trim()
     const classroomId = formData.get("classroomId").trim()
 
     await connectToDb()
 
+    const user = await getUser()
+
     const classroom = await Classroom.findById(classroomId)
-    classroom.members.push(userId)
+    classroom.members.push(user._id)
     await classroom.save()
+
+    revalidatePath("/dashboard")
+    return {
+      success: true,
+      error: false
+    }
   } catch (error) {
     return {
       success: false,
