@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { connectToDb } from "@/database/connection";
 import { StudyMaterial } from "@/database/models/StudyMaterial";
 import { parseData } from "@/lib/database";
+import Link from "next/link";
 import React from "react";
 
 const page = async () => {
@@ -56,8 +57,8 @@ const page = async () => {
                       Posted by: {post.owner.name}
                     </span>
                   </div>
-                  <a
-                    href="#"
+                  <Link
+                    href={`/dashboard/post/${post._id}`}
                     className="inline-flex items-center font-medium text-primary-600 hover:underline"
                   >
                     Read more
@@ -73,7 +74,7 @@ const page = async () => {
                         clip-rule="evenodd"
                       ></path>
                     </svg>
-                  </a>
+                  </Link>
                 </div>
               </article>
             ))}
