@@ -1,4 +1,5 @@
 import AddContent from "@/components/AddContent"
+import { Button } from "@/components/ui/button"
 import { connectToDb } from "@/database/connection"
 import { StudyMaterial } from "@/database/models/StudyMaterial"
 import { parseData } from "@/lib/database"
@@ -26,7 +27,7 @@ const page = async () => {
 
           <div>
             <AddContent>
-              <button>Post Content</button>
+              <Button className="mb-10">Post Content</Button>
             </AddContent>
           </div>
 
@@ -46,18 +47,11 @@ const page = async () => {
                 <h2 className="mb-2 text-2xl font-bold tracking-tight text-gray-900">
                   <a href="#">{post.title}</a>
                 </h2>
-                <p className="mb-5 font-light text-gray-500 dark:text-gray-400">
-                  {post.text}
-                </p>
+
                 <div className="flex justify-between items-center">
                   <div className="flex items-center space-x-4">
-                    <img
-                      className="w-7 h-7 rounded-full"
-                      src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/jese-leos.png"
-                      alt="Jese Leos avatar"
-                    />
                     <span className="font-medium dark:text-white">
-                      {post.owner.name}
+                      Posted by: {post.owner.name}
                     </span>
                   </div>
                   <a

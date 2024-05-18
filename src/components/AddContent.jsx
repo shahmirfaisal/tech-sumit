@@ -24,6 +24,7 @@ import { useFormState } from "react-dom"
 import { useEffect, useState } from "react"
 import { toast } from "sonner"
 import { Textarea } from "./ui/textarea"
+import { uploadFile } from "@/lib/cloudinary"
 
 const AddContent = ({ children }) => {
   const [type, setType] = useState("Text")
@@ -37,6 +38,17 @@ const AddContent = ({ children }) => {
   )
 
   const [open, setOpen] = useState(false)
+  const [image, setImage] = useState("")
+
+  const uploadImage = async (e) => {
+    const file = e.target.files?.[0]
+
+    if (!file) return
+
+    const url = await uploadFile(file)
+    console.log(url)
+    setImage(url)
+  }
 
   useEffect(() => {
     console.log(createContentState)
@@ -76,12 +88,25 @@ const AddContent = ({ children }) => {
           {type === "Text" ? (
             <Textarea placeholder="Text" rows={10} />
           ) : type === "Image" ? (
-            <Input placeholder="Title" name="image" />
+            <div className="w-full group relative h-60 border-black border-2">
+              <input
+                onChange={uploadImage}
+                type="file"
+                id="event-image"
+                hidden
+              />
+              <label
+                htmlFor="event-image"
+                className="hidden group-hover:block absolute top-0 left-0 w-full h-full bg-[rgba(0,0,0,0.3)]"
+              ></label>
+              <img src={image} alt="" className="block w-full h-full" />
+            </div>
           ) : (
             <Input placeholder="Youtube Video Link" name="video" />
           )}
 
           <input name="type" value={type} hidden />
+          <input name="image" value={image} hidden />
 
           <Button type="submit">Post</Button>
         </form>
