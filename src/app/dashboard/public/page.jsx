@@ -41,10 +41,6 @@ const page = async () => {
                 key={post._id}
               >
                 <div className="flex justify-between items-center mb-5 text-gray-500">
-                  <span className="bg-primary-100 text-primary-800 text-xs font-medium inline-flex items-center py-0.5 rounded">
-                    {post.text ? "Text" : post.image ? "Image" : "Video"}
-                    {/* {post.} */}
-                  </span>
                   <span className="text-sm">14 days ago</span>
                 </div>
                 <h2 className="mb-2 text-2xl font-bold tracking-tight text-gray-900">
