@@ -1,8 +1,8 @@
-import Chat from "@/components/Chat";
-import Footer from "@/components/Footer";
-import Navbar from "@/components/Navbar";
-import SubmitButton from "@/components/SubmitButton";
-import React from "react";
+import Chat from "@/components/Chat"
+import Footer from "@/components/Footer"
+import Navbar from "@/components/Navbar"
+import SubmitButton from "@/components/SubmitButton"
+import React from "react"
 
 const page = () => {
   return (
@@ -20,13 +20,13 @@ const page = () => {
               and prepares them for future. It uses AI to assist students.
             </p>
             <a
-              href="#"
+              href="/signup"
               class="inline-flex items-center justify-center px-5 py-3 me-3 text-base font-medium text-center text-white bg-green-500 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
             >
               Get Started
             </a>
             <a
-              href="#"
+              href="/login"
               class="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-gray-900 border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
             >
               Login
@@ -104,7 +104,7 @@ const page = () => {
         </div>
       </section>
     </div>
-  );
-};
+  )
+}
 
-export default page;
+export default page
