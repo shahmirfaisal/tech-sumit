@@ -9,12 +9,12 @@ export const createStudyMaterial = async (prev, formData) => {
   try {
     console.log(formData.get("title"))
     const title = formData.get("title").trim()
-    const type = formData.get("type").trim()
     const text = formData.get("text")
     const image = formData.get("image")
     const video = formData.get("video")
     const classroomId = formData.get("classroomId")
-
+    console.log(title)
+    console.log(text)
     if (title.length === 0) {
       return {
         success: false,
@@ -22,23 +22,10 @@ export const createStudyMaterial = async (prev, formData) => {
       }
     }
 
-    if (type === "Text" && text.length === 0) {
+    if (text.length === 0) {
       return {
         success: false,
         error: "Enter the text"
-      }
-    }
-
-    if (type === "Image" && image.length === 0) {
-      return {
-        success: false,
-        error: "Upload an image"
-      }
-    }
-    if (type === "Video" && video.length === 0) {
-      return {
-        success: false,
-        error: "Enter the video link"
       }
     }
 
@@ -48,11 +35,12 @@ export const createStudyMaterial = async (prev, formData) => {
 
     const data = {
       title,
+      text,
+      video,
+      image,
       owner: user._id
     }
-    if (type === "Text") data.text = text
-    if (type === "Image") data.image = image
-    if (type === "Video") data.video = video
+
     if (classroomId) data.classroom = classroomId
 
     const studyMaterial = new StudyMaterial(data)
