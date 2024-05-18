@@ -1,4 +1,3 @@
-import { userTypes } from "@/constants/user"
 import { Schema, model, models } from "mongoose"
 
 const userSchema = new Schema({
@@ -7,24 +6,12 @@ const userSchema = new Schema({
   },
   type: {
     type: String,
-    enum: userTypes
+    enum: ["Student", "Teacher"]
   },
   email: {
     type: String
   },
   password: {
-    type: String
-  },
-  address: {
-    type: String
-  },
-  phone: {
-    type: String
-  },
-  bio: {
-    type: String
-  },
-  image: {
     type: String
   }
 })
