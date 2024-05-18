@@ -5,9 +5,6 @@ import React from "react";
 const page = () => {
   return (
     <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-      <p className="mb-6 text-xl font-semibold text-white text-center">
-        User Registration Form: Create a user-friendly registration form.
-      </p>
       <div className="flex sm:flex-row flex-col items-center">
         <div className="flex">
           <img
