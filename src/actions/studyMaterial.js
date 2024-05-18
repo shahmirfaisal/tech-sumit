@@ -1,14 +1,18 @@
 "use server"
 
+import { connectToDb } from "@/database/connection"
 import { StudyMaterial } from "@/database/models/StudyMaterial"
+import { getUser } from "@/lib/user"
+import { revalidatePath } from "next/cache"
 
 export const createStudyMaterial = async (prev, formData) => {
   try {
+    console.log(formData.get("title"))
     const title = formData.get("title").trim()
     const type = formData.get("type").trim()
-    const text = formData.get("text").trim()
-    const image = formData.get("image").trim()
-    const video = formData.get("video").trim()
+    const text = formData.get("text")
+    const image = formData.get("image")
+    const video = formData.get("video")
     const classroomId = formData.get("classroomId")
 
     if (title.length === 0) {
@@ -53,6 +57,9 @@ export const createStudyMaterial = async (prev, formData) => {
 
     const studyMaterial = new StudyMaterial(data)
     await studyMaterial.save()
+    revalidatePath("/dashboard")
+
+    return { success: true, error: null }
   } catch (error) {
     return {
       success: false,
