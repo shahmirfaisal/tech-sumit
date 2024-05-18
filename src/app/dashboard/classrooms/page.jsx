@@ -23,7 +23,9 @@ const page = async () => {
     <>
       {user.type === "Teacher" && (
         <CreateClassroom>
-          <Button>Create Classroom</Button>
+          <div className="flex justify-end mx-24 my-4 max-md:mx-4">
+            <Button>Create Classroom</Button>
+          </div>
         </CreateClassroom>
       )}
       <div className="flex flex-wrap gap-4 mx-24 my-4 justify-center max-md:mx-4">
