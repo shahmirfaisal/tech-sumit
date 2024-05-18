@@ -1,6 +1,4 @@
-
-import Footer from "@/components/Footer"
-import Navbar from "@/components/Navbar"
+import SubmitButton from "@/components/SubmitButton"
 import React from "react"
 
 const page = () => {
@@ -32,4 +30,4 @@ const page = () => {
   )
 }
 
-export default page
+export default page;
