@@ -14,9 +14,11 @@ const page = async () => {
   return (
     <>
       <CreateClassroom>
-        <Button>Create Classroom</Button>
+        <div className="flex justify-end mx-24 my-4 max-md:mx-4">
+          <Button>Create Classroom</Button>
+        </div>
       </CreateClassroom>
-      <div className="flex flex-wrap gap-4 mx-24 my-4 justify-center max-md:mx-4">
+      <div className="flex flex-wrap gap-4 mx-24 my-4 justify-between max-md:mx-4">
         {classrooms.map((classroom) => (
           <div
             className="w-96 p-6 bg-white border border-gray-200 rounded-lg shadow "
