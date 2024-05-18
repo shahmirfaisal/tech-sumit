@@ -11,11 +11,13 @@ import Link from "next/link"
 
 const page = async ({ params: { id } }) => {
   await connectToDb()
-  let classroom = await Classroom.findById(id)
+  let classroom = await Classroom.findById(id).populate("owner")
   classroom = parseData(classroom)
   const user = await getUser()
   const isMember = classroom.members.includes(user._id)
-  let posts = await StudyMaterial.find({ classroom: classroom._id })
+  let posts = await StudyMaterial.find({ classroom: classroom._id }).populate(
+    "owner"
+  )
   posts = parseData(posts)
 
   return (
@@ -33,13 +35,14 @@ const page = async ({ params: { id } }) => {
         <JoinClassroom user={user} classroom={classroom} />
       )}
 
-      {classroom.owner === user._id ? (
+      {classroom.owner._id === user._id ? (
         <AddContent classroomId={classroom._id}>
           <Button className="self-center">Post Study Material</Button>
         </AddContent>
       ) : null}
 
-      {classroom.owner === user._id || classroom.members.includes(user._id) ? (
+      {classroom.owner._id === user._id ||
+      classroom.members.includes(user._id) ? (
         <div className="grid gap-8 lg:grid-cols-2">
           {posts.map((post) => (
             <article
@@ -47,10 +50,6 @@ const page = async ({ params: { id } }) => {
               key={post._id}
             >
               <div className="flex justify-between items-center mb-5 text-gray-500">
-                <span className="bg-primary-100 text-primary-800 text-xs font-medium inline-flex items-center py-0.5 rounded">
-                  {post.text ? "Text" : post.image ? "Image" : "Video"}
-                  {/* {post.} */}
-                </span>
                 <span className="text-sm">14 days ago</span>
               </div>
               <h2 className="mb-2 text-2xl font-bold tracking-tight text-gray-900">

@@ -1,16 +1,16 @@
-import AddContent from "@/components/AddContent";
-import { Button } from "@/components/ui/button";
-import { connectToDb } from "@/database/connection";
-import { StudyMaterial } from "@/database/models/StudyMaterial";
-import { parseData } from "@/lib/database";
-import Link from "next/link";
-import React from "react";
+import AddContent from "@/components/AddContent"
+import { Button } from "@/components/ui/button"
+import { connectToDb } from "@/database/connection"
+import { StudyMaterial } from "@/database/models/StudyMaterial"
+import { parseData } from "@/lib/database"
+import Link from "next/link"
+import React from "react"
 
 const page = async () => {
-  await connectToDb();
-  let posts = await StudyMaterial.find().populate("owner");
-  posts = parseData(posts);
-  console.log(posts);
+  await connectToDb()
+  let posts = await StudyMaterial.find({ classroom: null }).populate("owner")
+  posts = parseData(posts)
+  console.log(posts)
 
   return (
     <div>
@@ -82,7 +82,7 @@ const page = async () => {
         </div>
       </section>
     </div>
-  );
-};
+  )
+}
 
-export default page;
+export default page
