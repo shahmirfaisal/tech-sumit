@@ -1,5 +1,6 @@
 "use server"
 
+import { connectToDb } from "@/database/connection"
 import { Classroom } from "@/database/models/Classroom"
 import { getUser } from "@/lib/user"
 import { revalidatePath } from "next/cache"
