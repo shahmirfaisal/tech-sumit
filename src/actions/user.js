@@ -4,6 +4,8 @@ import { connectToDb } from "@/database/connection"
 import { User } from "@/database/models/User"
 import { createToken } from "@/lib/jwt"
 import { comparePassword, encryptPassword } from "@/lib/passwords"
+import { cookies } from "next/headers"
+import { redirect } from "next/navigation"
 
 const types = ["Student", "Teacher"]
 
@@ -77,7 +79,7 @@ export const signup = async (prevState, formData) => {
     }
   }
 
-  redirect("/")
+  redirect("/dashboard")
   return { error: null, success: true }
 }
 
@@ -118,6 +120,6 @@ export const login = async (prev, formData) => {
     }
   }
 
-  redirect("/")
+  redirect("/dashboard")
   return { error: null, success: true }
 }

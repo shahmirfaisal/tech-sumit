@@ -30,3 +30,21 @@ export const createClassroom = async (prev, formData) => {
     }
   }
 }
+
+export const joinClassroom = async (prev, formData) => {
+  try {
+    const userId = formData.get("userId").trim()
+    const classroomId = formData.get("classroomId").trim()
+
+    await connectToDb()
+
+    const classroom = await Classroom.findById(classroomId)
+    classroom.members.push(userId)
+    await classroom.save()
+  } catch (error) {
+    return {
+      success: false,
+      error: error.message
+    }
+  }
+}
