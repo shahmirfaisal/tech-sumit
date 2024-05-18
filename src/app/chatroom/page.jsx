@@ -4,8 +4,7 @@ import Navbar from "@/components/Navbar";
 const page = () => {
     return (
         <div>
-            <Navbar></Navbar>
-
+            
             <div class="h-screen flex flex-col py-15 px-10 mt-10 mx-10 mb-10">
                 <h1 className="font-bold text-center text-3xl pb-10">ChatRoom</h1>
                 
@@ -35,7 +34,7 @@ const page = () => {
                     </div>
                 </div>
             </div>
-            <Footer></Footer>
+  
         </div>
     );
 };
