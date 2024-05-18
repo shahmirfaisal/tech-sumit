@@ -1,10 +1,11 @@
-import SubmitButton from "@/components/SubmitButton"
+
+import Navbar from "@/components/Navbar"
 import React from "react"
 
 const page = () => {
   return (
     <div>
-      <SubmitButton>HELLO</SubmitButton>
+      <Navbar></Navbar>
     </div>
   )
 }
