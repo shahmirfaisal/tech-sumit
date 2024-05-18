@@ -80,11 +80,11 @@ const SignupForm = () => {
             <h2 className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
               Type
             </h2>
-            {/* <select name="type">
+            <select name="type">
               <option>Student</option>
               <option>Teacher</option>
-            </select> */}
-            <ul className="w-96 text-sm flex font-medium text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+            </select>
+          {/*   <ul className="w-96 text-sm flex font-medium text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
               <li className="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
                 <div className="flex items-center ps-3">
                   <input
@@ -119,7 +119,7 @@ const SignupForm = () => {
                   </label>
                 </div>
               </li>
-            </ul>
+            </ul> */}
           </div>
 
           <button className="w-full text-white bg-[#92E3A9] focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center hover:bg-[#92E3A9] focus:ring-white">

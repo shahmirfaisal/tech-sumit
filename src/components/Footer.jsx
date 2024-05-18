@@ -25,6 +25,7 @@ const Footer = () => {
                       <li class="mb-4">
                           <Link href="/dashboard/public" class="hover:underline">Dashboard</Link>
                       </li>
+                      
                   </ul>
               </div>
 
