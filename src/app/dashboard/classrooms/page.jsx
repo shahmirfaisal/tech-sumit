@@ -1,15 +1,15 @@
-import CreateClassroom from "@/components/CreateClassroom"
-import { Button } from "@/components/ui/button"
-import { connectToDb } from "@/database/connection"
-import { Classroom } from "@/database/models/Classroom"
-import { parseData } from "@/lib/database"
-import Link from "next/link"
-import React from "react"
+import CreateClassroom from "@/components/CreateClassroom";
+import { Button } from "@/components/ui/button";
+import { connectToDb } from "@/database/connection";
+import { Classroom } from "@/database/models/Classroom";
+import { parseData } from "@/lib/database";
+import Link from "next/link";
+import React from "react";
 
 const page = async () => {
-  await connectToDb()
-  let classrooms = await Classroom.find()
-  classrooms = parseData(classrooms)
+  await connectToDb();
+  let classrooms = await Classroom.find();
+  classrooms = parseData(classrooms);
 
   return (
     <>
@@ -117,7 +117,7 @@ const page = async () => {
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default page
+export default page;
